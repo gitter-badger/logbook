@@ -145,9 +145,11 @@ final class RemoteRequest extends HttpServletRequestWrapper implements RawHttpRe
 
     @Override
     public ServletInputStream getInputStream() throws IOException {
+        final ServletInputStream stream = super.getInputStream();
+
         return body == null ?
-                super.getInputStream() :
-                new ServletInputStreamAdapter(new ByteArrayInputStream(body));
+                stream :
+                new ServletInputStreamAdapter(stream, new ByteArrayInputStream(body));
     }
 
     @Override
