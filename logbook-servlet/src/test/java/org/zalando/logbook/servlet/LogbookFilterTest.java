@@ -15,7 +15,12 @@ final class LogbookFilterTest {
     }
 
     @Test
-    void shouldCallInit() throws ServletException {
+    void shouldCreateSecureLogbookFilter() {
+        new SecureLogbookFilter();
+    }
+
+    @Test
+    void shouldCallInit() {
         new LogbookFilter().init(mock(FilterConfig.class));
     }
 
